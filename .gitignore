@@ -1,0 +1,266 @@
+# ========================================
+# Project
+# ========================================
+data/
+assets/
+!data/.gitkeep
+!assets/.gitkeep
+!.gitattributes
+
+# ========================================
+# Nix
+# ========================================
+.direnv/
+/result*
+
+# ========================================
+# Python
+# ========================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# ========================================
+# Jupyter Notebooks
+# ========================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+*.ipynb_meta/
+
+# ========================================
+# PyTorch / Machine Learning
+# ========================================
+
+# Model checkpoints and weights
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+models/
+saved_models/
+weights/
+
+# Datasets (usually too large for git)
+data/
+datasets/
+*.csv
+*.json
+*.parquet
+!pyproject.toml
+
+# TensorBoard logs
+runs/
+logs/
+tensorboard/
+lightning_logs/
+
+# Hugging Face cache
+.cache/
+
+# ========================================
+# Node.js
+# ========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+
+# ========================================
+# Nix
+# ========================================
+result
+result-*
+.direnv/
+.devenv/
+devenv.local.nix
+
+# ========================================
+# IDEs and Editors
+# ========================================
+
+# VSCode / Cursor
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+tags
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ========================================
+# Operating System
+# ========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ========================================
+# Miscellaneous
+# ========================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Secrets
+secrets/
+*.pem
+*.key
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large files
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Outputs
+outputs/
+output/
+results/
