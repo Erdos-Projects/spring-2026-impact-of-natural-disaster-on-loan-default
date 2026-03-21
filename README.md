@@ -23,21 +23,21 @@ The pipeline moves through four sequential stages:
 ## Folder Structure
 
 ```
-├── Preprocessing/   # Data cleaning and merging pipeline
-├── EDA/             # Exploratory data analysis
-├── Inference/       # Panel econometric (causal) analysis
-├── Modeling/        # Predictive modeling with CatBoost
+├── docs/            # Stage-specific documentation
+├── notebooks/       # Jupyter notebooks and helper scripts
+├── src/climatefinance/  # Reusable Python library
+├── data/            # Raw and processed datasets
 ```
 
 ---
 
 ## Running the Pipeline
 
-Run the folders **in order**. Each stage produces output consumed by the next.
+Run the notebooks **in order**. Each stage produces output consumed by the next.
 
 ### 1. Preprocessing
 
-📂 [`Preprocessing/`](Preprocessing/README.md)
+📂 [`Preprocessing`](docs/Preprocessing.md)
 
 Cleans and merges two raw datasets:
 
@@ -48,13 +48,13 @@ The pipeline collapses event-level disaster records into the county × month gri
 
 **Output:** `Finance_Disaster_Analysis.csv` — a clean county × month panel ready for analysis.
 
-➡️ [Full Preprocessing README](Preprocessing/README.md)
+➡️ [Full Preprocessing README](docs/Preprocessing.md)
 
 ---
 
 ### 2. EDA
 
-📂 [`EDA/`](EDA/README.md)
+📂 [`EDA`](docs/EDA.md)
 
 Explores `Finance_Disaster_Analysis.csv` before any modeling. Key findings:
 
@@ -64,13 +64,13 @@ Explores `Finance_Disaster_Analysis.csv` before any modeling. Key findings:
 - Raw delinquency comparisons between treated and untreated county-months are dominated by cross-county baseline differences — motivating a within-county fixed-effects design.
 - County-demeaned event studies (±12 months around first treatment) isolate the local treatment effect cleanly.
 
-➡️ [Full EDA README](EDA/README.md)
+➡️ [Full EDA README](docs/EDA.md)
 
 ---
 
 ### 3. Inference
 
-📂 [`Inference/`](Inference/README.md)
+📂 [`Inference`](docs/Inference.md)
 
 Estimates the **causal effect** of natural disasters on delinquency using **two-way fixed-effects Panel OLS** (county + month fixed effects, standard errors clustered at the county level).
 
@@ -87,13 +87,13 @@ Key results:
 
 The negative lagged damage effects are consistent with post-disaster mortgage forbearance programs and FEMA aid temporarily easing borrowers' financial burden.
 
-➡️ [Full Inference README](Inference/README.md)
+➡️ [Full Inference README](docs/Inference.md)
 
 ---
 
 ### 4. Modeling
 
-📂 [`Modeling/`](Modeling/README.md)
+📂 [`Modeling`](docs/Modeling.md)
 
 Trains a **CatBoost Regressor** to predict `Early_Delinquency_Rate` one month ahead, using 60 engineered features (lagged delinquency rates, lagged and rolling disaster exposure, calendar and geographic features). The dataset is split **chronologically** to prevent data leakage.
 
@@ -105,7 +105,7 @@ Trains a **CatBoost Regressor** to predict `Early_Delinquency_Rate` one month ah
 
 CatBoost reduces RMSE by ~21% over the naive baseline on the held-out test set. Lagged delinquency rates are the dominant features, with disaster-related features contributing meaningful additional signal.
 
-➡️ [Full Modeling README](Modeling/README.md)
+➡️ [Full Modeling README](docs/Modeling.md)
 
 ---
 

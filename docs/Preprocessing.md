@@ -148,9 +148,9 @@ Verify this points to your local `1-Climate Finance Project` folder, and update 
 
 ```bash
 # Option 1: run interactively
-jupyter lab Preprocessing.ipynb
+jupyter lab notebooks/Preprocessing.ipynb
 
 # Option 2: execute headlessly and save output
-jupyter nbconvert --to notebook --execute Preprocessing.ipynb --output Preprocessing_executed.ipynb
+jupyter nbconvert --to notebook --execute notebooks/Preprocessing.ipynb --output notebooks/Preprocessing_executed.ipynb
 ```
 

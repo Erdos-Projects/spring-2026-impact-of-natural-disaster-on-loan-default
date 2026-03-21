@@ -7,7 +7,7 @@
 
 ## Overview
 
-`EDA.ipynb` explores `Finance_Disaster_Analysis.csv` — the merged panel produced by the Preprocessing pipeline — before any modeling. The goals are to:
+`notebooks/eda.ipynb` explores `Finance_Disaster_Analysis.csv` — the merged panel produced by the Preprocessing pipeline — before any modeling. The goals are to:
 
 1. Understand the distribution and frequency of disaster treatment events.
 2. Check whether delinquency rates move around disaster dates (raw and county-demeaned).
@@ -125,9 +125,9 @@ Verify this points to your local `1-Climate Finance Project` folder and update i
 
 ```bash
 # Option 1: run interactively
-jupyter lab EDA.ipynb
+jupyter lab notebooks/eda.ipynb
 
 # Option 2: execute headlessly and save output
-jupyter nbconvert --to notebook --execute EDA.ipynb --output EDA_executed.ipynb
+jupyter nbconvert --to notebook --execute notebooks/eda.ipynb --output notebooks/eda_executed.ipynb
 ```
 

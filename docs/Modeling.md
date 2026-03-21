@@ -73,7 +73,7 @@ The CatBoost model substantially outperforms the naive baseline, reducing RMSE b
 
 ### Top Feature Importances
 
-The 20 most important features (by CatBoost's built-in importance metric) are visualized in `Modeling.ipynb`. Lagged delinquency rates dominate, confirming strong autocorrelation in delinquency series — with disaster-related features contributing meaningful signal on top of that baseline.
+The 20 most important features (by CatBoost's built-in importance metric) are visualized in `notebooks/Modeling.ipynb`. Lagged delinquency rates dominate, confirming strong autocorrelation in delinquency series — with disaster-related features contributing meaningful signal on top of that baseline.
 
 ---
 
@@ -81,6 +81,6 @@ The 20 most important features (by CatBoost's built-in importance metric) are vi
 
 | File            | Description                                              |
 |-----------------|----------------------------------------------------------|
-| `Modeling.ipynb` | End-to-end notebook: feature construction, model training, evaluation, and feature importance plot |
-| `modeling.py`   | Reusable helper functions: `build_prediction_dataset`, `temporal_split`, `evaluate_predictions` |
+| `notebooks/Modeling.ipynb` | End-to-end notebook: feature construction, model training, evaluation, and feature importance plot |
+| `notebooks/modeling.py`   | Reusable helper functions: `build_prediction_dataset`, `temporal_split`, `evaluate_predictions` |
 

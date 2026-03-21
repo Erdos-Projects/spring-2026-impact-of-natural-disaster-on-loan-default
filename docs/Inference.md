@@ -6,7 +6,7 @@ This folder contains the panel econometric analysis estimating the causal effect
 
 | File | Description |
 |------|-------------|
-| `Inference.ipynb` | Panel OLS regressions of delinquency rates on disaster exposure variables |
+| `notebooks/Inference.ipynb` | Panel OLS regressions of delinquency rates on disaster exposure variables |
 
 ## Data
 
