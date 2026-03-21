@@ -18,6 +18,7 @@ def _savefig(fig: plt.Figure, name: str, subfolder: str = EDA_FOLDER) -> None:
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{name}.png")
     fig.savefig(path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
     print(f"Saved {os.path.join(rel_dir, name)}.png")
 
 

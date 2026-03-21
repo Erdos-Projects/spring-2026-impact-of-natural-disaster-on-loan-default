@@ -156,13 +156,32 @@ uv sync
 
 This installs the `climatefinance` library in editable mode along with all dev dependencies (Jupyter, ruff, ty). See [`pyproject.toml`](pyproject.toml) for the full dependency list.
 
-### Running notebooks
+### Running the pipeline
+
+**Interactive** — open notebooks in Jupyter and run cells manually:
 
 ```bash
 jupyter lab notebooks/preprocessing.ipynb
 ```
 
-Run the notebooks in order: `preprocessing` → `eda` → `inference` → `modeling`. Each stage saves outputs consumed by the next.
+Run in order: `preprocessing` → `eda` → `inference` → `modeling`. Each stage saves outputs consumed by the next.
+
+**Non-interactive** — run the full pipeline as standalone scripts:
+
+```bash
+make run-all
+```
+
+Or run individual stages:
+
+```bash
+make run-preprocessing
+make run-eda
+make run-inference
+make run-modeling
+```
+
+Scripts live in `scripts/` and produce the same outputs as the notebooks (CSV results and PNG figures).
 
 ### Using the library
 
@@ -180,6 +199,11 @@ plots.plot_eda_delinquency_over_time(df)
 
 | Command | Description |
 |---------|-------------|
-| `make qc` | Run linting (ruff) and type checking (ty) on `src/` and `notebooks/` |
+| `make run-all` | Run the full pipeline (preprocessing → eda → inference → modeling) |
+| `make run-preprocessing` | Run preprocessing only |
+| `make run-eda` | Run EDA only |
+| `make run-inference` | Run inference only |
+| `make run-modeling` | Run modeling only |
+| `make qc` | Run linting (ruff) and type checking (ty) on `src/`, `scripts/`, and `notebooks/` |
 | `make nb-clean` | Strip all cell outputs from notebooks |
 
