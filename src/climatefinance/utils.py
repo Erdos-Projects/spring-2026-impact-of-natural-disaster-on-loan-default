@@ -17,7 +17,7 @@ def get_repo_root() -> str:
 def read_dta(filepath: str) -> pd.DataFrame:
     """Read a Stata .dta file relative to the repo root."""
     repo_root = get_repo_root()
-    df: pd.DataFrame = pd.read_stata(repo_root + "/" + filepath)
+    df: pd.DataFrame = pd.read_stata(repo_root + "/" + filepath)  # ty: ignore[invalid-assignment]
     return df
 
 
