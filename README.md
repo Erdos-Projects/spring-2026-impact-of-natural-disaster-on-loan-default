@@ -209,3 +209,12 @@ plots.plot_eda_delinquency_over_time(df)
 | `make qc` | Run linting (ruff) and type checking (ty) on `src/`, `scripts/`, and `notebooks/` |
 | `make nb-clean` | Strip all cell outputs from notebooks |
 
+---
+
+## Sources
+
+- **Mortgage delinquency data:** CFPB Mortgage Performance Trends, from the National Mortgage Database (NMDB), a joint project of the CFPB and FHFA.
+- **Disaster data:** NOAA Storm Events Database, compiled by the National Weather Service.
+- **Data cleaning pipeline:** Ghosh, Anupam, *Do Storms Bring Crime? Evidence from US Counties* (October 01, 2025). Available at SSRN: https://ssrn.com/abstract=6165266
+
+See [docs/Sources.md](docs/Sources.md) for full references and links.
