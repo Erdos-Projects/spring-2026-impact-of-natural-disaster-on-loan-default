@@ -16,4 +16,5 @@ __all__ = [
     "DISASTER_FILE",
     "FINANCE_FILE",
     "TARGET_TYPES",
+    "FIGURE_FOLDER",
 ]

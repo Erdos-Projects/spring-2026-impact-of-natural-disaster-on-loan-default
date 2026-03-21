@@ -14,3 +14,5 @@ TARGET_TYPES = [
     "Wildfire",
     "Hail",
 ]
+FIGURE_FOLDER = "data/figures"
+EDA_FOLDER = "data/figures/eda"
