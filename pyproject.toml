@@ -30,6 +30,7 @@ dev = [
     "jupyter",
     "ipykernel",
     "ruff",
+    "ty",
 ]
 scraping = [
     "cinemagoer",
@@ -59,6 +60,7 @@ override-dependencies = [
 line-length = 100
 target-version = "py314"
 src = ["src"]
+extend-exclude = ["notebooks/"]
 
 [tool.ruff.lint]
 select = [
