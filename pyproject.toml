@@ -60,7 +60,8 @@ override-dependencies = [
 line-length = 100
 target-version = "py314"
 src = ["src"]
-extend-exclude = ["notebooks/"]
+extend-exclude = ["notebooks/*.py"]
+extend-include = ["*.ipynb"]
 
 [tool.ruff.lint]
 select = [
