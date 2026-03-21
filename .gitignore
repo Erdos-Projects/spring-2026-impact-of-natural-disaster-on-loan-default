@@ -1,11 +1,15 @@
 # ========================================
 # Project
 # ========================================
-data/
-assets/
-!data/.gitkeep
-!assets/.gitkeep
-!.gitattributes
+data/*
+!data/*/.gitkeep
+!data/analysis/
+data/analysis/*
+!data/analysis/inference_results.csv
+!data/analysis/modeling_results.csv
+
+assets/*
+!assets/*/.gitkeep
 
 # ========================================
 # Nix
@@ -122,12 +126,8 @@ weights/
 catboost_info/
 
 # Datasets (usually too large for git)
-data/
 datasets/
-*.csv
-*.json
 *.parquet
-!pyproject.toml
 
 # TensorBoard logs
 runs/
