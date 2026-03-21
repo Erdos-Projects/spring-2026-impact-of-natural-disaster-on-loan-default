@@ -1,4 +1,4 @@
-"""EDA plotting functions for climate finance analysis."""
+"""Plotting functions for climate finance analysis."""
 
 import os
 
@@ -7,17 +7,18 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from climatefinance.constants import EDA_FOLDER, TARGET_TYPES
+from climatefinance.constants import EDA_FOLDER, FIGURE_FOLDER, MODEL_FOLDER, TARGET_TYPES
 from climatefinance.utils import get_repo_root
 
 
-def _savefig(fig: plt.Figure, name: str) -> None:
-    """Save figure to FIGURE_FOLDER/eda/<name>.png."""
-    out_dir = os.path.join(get_repo_root(), EDA_FOLDER)
+def _savefig(fig: plt.Figure, name: str, subfolder: str = EDA_FOLDER) -> None:
+    """Save figure to FIGURE_FOLDER/<subfolder>/<name>.png."""
+    rel_dir = os.path.join(FIGURE_FOLDER, subfolder)
+    out_dir = os.path.join(get_repo_root(), rel_dir)
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{name}.png")
     fig.savefig(path, dpi=150, bbox_inches="tight")
-    print(f"Saved {os.path.join(EDA_FOLDER, name)}.png")
+    print(f"Saved {os.path.join(rel_dir, name)}.png")
 
 
 def plot_eda_disaster_frequency(df: pd.DataFrame) -> plt.Figure:
@@ -201,4 +202,46 @@ def plot_eda_top_disaster_types(df: pd.DataFrame) -> plt.Figure:
     ax.set_title("Disaster Frequency by Type")
     fig.tight_layout()
     _savefig(fig, "top_disaster_types")
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# Modeling plots
+# ---------------------------------------------------------------------------
+
+
+def plot_model_feature_importance(
+    feature_names: list[str],
+    importances: np.ndarray,
+    top_n: int = 20,
+) -> plt.Figure:
+    """Horizontal bar chart of top CatBoost feature importances."""
+    imp_df = pd.DataFrame({"feature": feature_names, "importance": importances}).sort_values(
+        "importance", ascending=False
+    )
+    top_imp = imp_df.head(top_n).iloc[::-1]
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.barh(top_imp["feature"], top_imp["importance"])
+    ax.set_title(f"Top {top_n} CatBoost Feature Importances")
+    ax.set_xlabel("Importance")
+    fig.tight_layout()
+    _savefig(fig, "feature_importance", subfolder=MODEL_FOLDER)
+    return fig
+
+
+def plot_model_monthly_performance(
+    monthly_true: pd.Series,
+    monthly_pred: pd.Series,
+) -> plt.Figure:
+    """Line chart of average true vs predicted delinquency by month on the test set."""
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(monthly_true.index, monthly_true.values, label="True")
+    ax.plot(monthly_pred.index, monthly_pred.values, label="Predicted")
+    ax.set_title("Average True vs Predicted Early Delinquency (Test Set)")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Early Delinquency Rate")
+    ax.legend()
+    fig.tight_layout()
+    _savefig(fig, "monthly_performance", subfolder=MODEL_FOLDER)
     return fig

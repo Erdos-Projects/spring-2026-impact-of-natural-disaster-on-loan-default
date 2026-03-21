@@ -8,6 +8,7 @@ from climatefinance.constants import (
     DISASTER_FILE,
     FINANCE_FILE,
     INFERENCE_FILE,
+    MODELING_FILE,
     TARGET_TYPES,
 )
 
@@ -15,8 +16,9 @@ __all__ = [
     "ANALYSIS_FILE",
     "ANALYSIS_FOLDER",
     "DISASTER_FILE",
-    "FINANCE_FILE",
     "FIGURE_FOLDER",
+    "FINANCE_FILE",
     "INFERENCE_FILE",
+    "MODELING_FILE",
     "TARGET_TYPES",
 ]

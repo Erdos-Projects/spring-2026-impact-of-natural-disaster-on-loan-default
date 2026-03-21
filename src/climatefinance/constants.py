@@ -15,5 +15,7 @@ TARGET_TYPES = [
     "Hail",
 ]
 INFERENCE_FILE = "inference_results"
+MODELING_FILE = "modeling_results"
 FIGURE_FOLDER = "data/figures"
-EDA_FOLDER = "data/figures/eda"
+EDA_FOLDER = "eda"
+MODEL_FOLDER = "model"

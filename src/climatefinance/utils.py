@@ -12,6 +12,7 @@ from climatefinance.constants import (
     DISASTER_FILE,
     FINANCE_FILE,
     INFERENCE_FILE,
+    MODELING_FILE,
     TARGET_TYPES,
 )
 
@@ -99,6 +100,16 @@ def save_analysis_inference(df: pd.DataFrame, **kwargs: Any) -> None:
 def load_analysis_inference(**kwargs: Any) -> pd.DataFrame:
     """Load inference results."""
     return load_analysis(INFERENCE_FILE, **kwargs)
+
+
+def save_analysis_modeling(df: pd.DataFrame, **kwargs: Any) -> None:
+    """Save modeling results."""
+    save_analysis(df, MODELING_FILE, **kwargs)
+
+
+def load_analysis_modeling(**kwargs: Any) -> pd.DataFrame:
+    """Load modeling results."""
+    return load_analysis(MODELING_FILE, **kwargs)
 
 
 # ---------------------------------------------------------------------------
