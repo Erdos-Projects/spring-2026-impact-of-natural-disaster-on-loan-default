@@ -5,6 +5,7 @@ description = "Library for analyzing the impact of natural disasters on loan def
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "GitPython",
     "matplotlib>=3.10",
     "numpy>=2.3",
     "openpyxl>=3.1",
@@ -55,8 +56,31 @@ override-dependencies = [
 ]
 
 [tool.ruff]
+line-length = 100
 target-version = "py314"
 src = ["src"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP"]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "ANN", # flake8-annotations
+    "UP",  # pyupgrade
+]
+ignore = []
+
+[tool.ruff.format]
+skip-magic-trailing-comma = false
+
+[tool.ty]
+
+[tool.ty.src]
+include = ["src/**/*.py"]
+respect-ignore-files = true
+
+[tool.ty.rules]
+invalid-return-type = "warn"
+invalid-assignment = "warn"
