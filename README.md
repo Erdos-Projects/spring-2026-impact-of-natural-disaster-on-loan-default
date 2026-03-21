@@ -74,7 +74,7 @@ Run the notebooks **in order**. Each stage produces output consumed by the next.
 
 ### 1. Preprocessing
 
-📂 [`Preprocessing`](docs/Preprocessing.md)
+[`Preprocessing`](docs/Preprocessing.md)
 
 Cleans and merges two raw datasets:
 
@@ -85,13 +85,13 @@ The pipeline collapses event-level disaster records into the county × month gri
 
 **Output:** `finance_disaster_analysis.csv` — a clean county × month panel ready for analysis.
 
-➡️ [Full Preprocessing README](docs/Preprocessing.md)
+[Full Preprocessing README](docs/Preprocessing.md)
 
 ---
 
 ### 2. EDA
 
-📂 [`EDA`](docs/EDA.md)
+[`EDA`](docs/EDA.md)
 
 Explores `finance_disaster_analysis.csv` before any modeling. Key findings:
 
@@ -101,13 +101,13 @@ Explores `finance_disaster_analysis.csv` before any modeling. Key findings:
 - Raw delinquency comparisons between treated and untreated county-months are dominated by cross-county baseline differences — motivating a within-county fixed-effects design.
 - County-demeaned event studies (±12 months around first treatment) isolate the local treatment effect cleanly.
 
-➡️ [Full EDA README](docs/EDA.md)
+[Full EDA README](docs/EDA.md)
 
 ---
 
 ### 3. Inference
 
-📂 [`Inference`](docs/Inference.md)
+[`Inference`](docs/Inference.md)
 
 Estimates the **causal effect** of natural disasters on delinquency using **two-way fixed-effects Panel OLS** (county + month fixed effects, standard errors clustered at the county level).
 
@@ -124,13 +124,13 @@ Key results:
 
 The negative lagged damage effects are consistent with post-disaster mortgage forbearance programs and FEMA aid temporarily easing borrowers' financial burden.
 
-➡️ [Full Inference README](docs/Inference.md)
+[Full Inference README](docs/Inference.md)
 
 ---
 
 ### 4. Modeling
 
-📂 [`Modeling`](docs/Modeling.md)
+[`Modeling`](docs/Modeling.md)
 
 Trains a **CatBoost Regressor** to predict `Early_Delinquency_Rate` one month ahead, using 60 engineered features (lagged delinquency rates, lagged and rolling disaster exposure, calendar and geographic features). The dataset is split **chronologically** to prevent data leakage.
 
@@ -142,7 +142,7 @@ Trains a **CatBoost Regressor** to predict `Early_Delinquency_Rate` one month ah
 
 CatBoost reduces RMSE by ~21% over the naive baseline on the held-out test set. Lagged delinquency rates are the dominant features, with disaster-related features contributing meaningful additional signal.
 
-➡️ [Full Modeling README](docs/Modeling.md)
+[Full Modeling README](docs/Modeling.md)
 
 ---
 
