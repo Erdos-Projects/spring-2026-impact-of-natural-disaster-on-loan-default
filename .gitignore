@@ -119,6 +119,7 @@ checkpoints/
 models/
 saved_models/
 weights/
+catboost_info/
 
 # Datasets (usually too large for git)
 data/
