@@ -72,7 +72,9 @@ select = [
     "ANN", # flake8-annotations
     "UP",  # pyupgrade
 ]
-ignore = []
+ignore = [
+    "ANN401", # Allow Any in **kwargs for pandas pass-through functions
+]
 
 [tool.ruff.format]
 skip-magic-trailing-comma = false
