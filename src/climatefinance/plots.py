@@ -8,13 +8,13 @@ import pandas as pd
 import seaborn as sns
 
 from climatefinance.constants import EDA_FOLDER, FIGURE_FOLDER, MODEL_FOLDER, TARGET_TYPES
-from climatefinance.utils import get_repo_root
+from climatefinance.utils import repo_path
 
 
 def _savefig(fig: plt.Figure, name: str, subfolder: str = EDA_FOLDER) -> None:
     """Save figure to FIGURE_FOLDER/<subfolder>/<name>.png."""
     rel_dir = os.path.join(FIGURE_FOLDER, subfolder)
-    out_dir = os.path.join(get_repo_root(), rel_dir)
+    out_dir = repo_path(rel_dir)
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{name}.png")
     fig.savefig(path, dpi=150, bbox_inches="tight")

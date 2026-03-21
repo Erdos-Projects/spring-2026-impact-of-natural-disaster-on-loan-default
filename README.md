@@ -46,6 +46,8 @@ data/
 | `disaster_dataset_cleaned.dta` | `data/disaster/` | Cleaned version of the raw dataset with standardized column names, parsed damage values, and filtered date ranges. This is the input consumed by the Preprocessing notebook. |
 | `finance_disaster_master.dta` | `data/finance/` | County × month panel of mortgage delinquency rates (early: 30–89 days past due, late: 90+ days). One row per FIPS code × calendar month, January 2008 – February 2025. |
 
+See [Data Cleaning](docs/Cleaning.md) for full documentation of the upstream Stata pipeline that produces these files.
+
 ### Pipeline outputs
 
 | File | Directory | Description |

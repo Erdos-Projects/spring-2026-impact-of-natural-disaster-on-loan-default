@@ -22,10 +22,14 @@ def get_repo_root() -> str:
     return str(git.Repo(os.getcwd(), search_parent_directories=True).working_dir)
 
 
+def repo_path(*parts: str) -> str:
+    """Resolve path parts relative to the repo root."""
+    return os.path.join(get_repo_root(), *parts)
+
+
 def read_dta(filepath: str) -> pd.DataFrame:
     """Read a Stata .dta file relative to the repo root."""
-    path = os.path.join(get_repo_root(), filepath)
-    df: pd.DataFrame = pd.read_stata(path)  # ty: ignore[invalid-assignment]
+    df: pd.DataFrame = pd.read_stata(repo_path(filepath))  # ty: ignore[invalid-assignment]
     print(f"Loaded {len(df)} rows from {filepath}")
     return df
 
@@ -57,10 +61,10 @@ def save_analysis(
     **kwargs: Any,
 ) -> None:
     """Save a DataFrame as CSV to repo_root/subdir/filename.csv."""
-    path = os.path.join(get_repo_root(), subdir, f"{filename}.csv")
+    rel_path = os.path.join(subdir, f"{filename}.csv")
+    path = repo_path(rel_path)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     df.to_csv(path, **kwargs)
-    rel_path = os.path.join(subdir, f"{filename}.csv")
     print(f"Saved {len(df)} rows to {rel_path}")
 
 
@@ -70,9 +74,8 @@ def load_analysis(
     **kwargs: Any,
 ) -> pd.DataFrame:
     """Load a CSV from repo_root/subdir/filename.csv."""
-    path = os.path.join(get_repo_root(), subdir, f"{filename}.csv")
-    df: pd.DataFrame = pd.read_csv(path, **kwargs)
     rel_path = os.path.join(subdir, f"{filename}.csv")
+    df: pd.DataFrame = pd.read_csv(repo_path(rel_path), **kwargs)
     print(f"Loaded {len(df)} rows from {rel_path}")
     return df
 
