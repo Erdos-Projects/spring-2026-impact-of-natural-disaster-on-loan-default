@@ -14,5 +14,6 @@ TARGET_TYPES = [
     "Wildfire",
     "Hail",
 ]
+INFERENCE_FILE = "inference_results"
 FIGURE_FOLDER = "data/figures"
 EDA_FOLDER = "data/figures/eda"

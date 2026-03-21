@@ -11,6 +11,7 @@ from climatefinance.constants import (
     ANALYSIS_FOLDER,
     DISASTER_FILE,
     FINANCE_FILE,
+    INFERENCE_FILE,
     TARGET_TYPES,
 )
 
@@ -43,9 +44,14 @@ def get_target_types() -> list:
     return TARGET_TYPES
 
 
-def save_analysis_data(
+# ---------------------------------------------------------------------------
+# Generic save / load
+# ---------------------------------------------------------------------------
+
+
+def save_analysis(
     df: pd.DataFrame,
-    filename: str = ANALYSIS_FILE,
+    filename: str,
     subdir: str = ANALYSIS_FOLDER,
     **kwargs: Any,
 ) -> None:
@@ -57,8 +63,8 @@ def save_analysis_data(
     print(f"Saved {len(df)} rows to {rel_path}")
 
 
-def load_analysis_data(
-    filename: str = ANALYSIS_FILE,
+def load_analysis(
+    filename: str,
     subdir: str = ANALYSIS_FOLDER,
     **kwargs: Any,
 ) -> pd.DataFrame:
@@ -68,3 +74,60 @@ def load_analysis_data(
     rel_path = os.path.join(subdir, f"{filename}.csv")
     print(f"Loaded {len(df)} rows from {rel_path}")
     return df
+
+
+# ---------------------------------------------------------------------------
+# Specialized save / load for each output file
+# ---------------------------------------------------------------------------
+
+
+def save_analysis_data(df: pd.DataFrame, **kwargs: Any) -> None:
+    """Save the main analysis panel (finance + disaster)."""
+    save_analysis(df, ANALYSIS_FILE, **kwargs)
+
+
+def load_analysis_data(**kwargs: Any) -> pd.DataFrame:
+    """Load the main analysis panel (finance + disaster)."""
+    return load_analysis(ANALYSIS_FILE, **kwargs)
+
+
+def save_analysis_inference(df: pd.DataFrame, **kwargs: Any) -> None:
+    """Save inference results."""
+    save_analysis(df, INFERENCE_FILE, **kwargs)
+
+
+def load_analysis_inference(**kwargs: Any) -> pd.DataFrame:
+    """Load inference results."""
+    return load_analysis(INFERENCE_FILE, **kwargs)
+
+
+# ---------------------------------------------------------------------------
+# PanelOLS result extraction
+# ---------------------------------------------------------------------------
+
+
+def extract_panel_results(
+    result: Any,
+    model: str,
+    outcome: str,
+) -> list[dict[str, Any]]:
+    """Extract key coefficients from a PanelOLS result into a list of dicts.
+
+    Returns one dict per regressor with model name, outcome, coefficient,
+    standard error, p-value, number of observations, and R².
+    """
+    rows: list[dict[str, Any]] = []
+    for regressor in result.params.index:
+        rows.append(
+            {
+                "model": model,
+                "outcome": outcome,
+                "regressor": regressor,
+                "coef": result.params[regressor],
+                "se": result.std_errors[regressor],
+                "pvalue": result.pvalues[regressor],
+                "nobs": result.nobs,
+                "r2": result.rsquared,
+            }
+        )
+    return rows
