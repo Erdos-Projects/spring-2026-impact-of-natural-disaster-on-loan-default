@@ -11,8 +11,8 @@
 
 The two raw datasets live at different levels of aggregation:
 
-- **`Disaster_Dataset_Cleaned.dta`** — one row per NOAA storm event (event-level), covering the full U.S.
-- **`Finance_Disaster_Master.dta`** — one row per county × month, tracking early and late loan delinquency rates
+- **`disaster_dataset_cleaned.dta`** — one row per NOAA storm event (event-level), covering the full U.S.
+- **`finance_disaster_master.dta`** — one row per county × month, tracking early and late loan delinquency rates
 
 The preprocessing pipeline's job is to collapse the event-level disaster data into the same county × month grid as the finance data, then merge the two into a single analysis table.
 
@@ -132,7 +132,7 @@ After the join, unmatched rows (county-months with no disaster) receive `NaN` fo
 
 > **Design decision:** Zero-filling assumes that the absence of a disaster record genuinely means no qualifying disaster occurred in that county-month — not that the data is missing. This is a reasonable assumption for NOAA Storm Events, which aims for comprehensive coverage, but it is worth flagging as an open question. An alternative would be to use `NaN` and let the model treat unobserved county-months differently, or to cross-validate against a separate coverage dataset.
 
-The final table `analysis_df` has one row per county × month, the same shape as `finance_master`, and is saved as **`Finance_Disaster_Analysis.dta`** in the `3-Analysis` data folder — this is the file picked up by the modeling notebook.
+The final table `analysis_df` has one row per county × month, the same shape as `finance_master`, and is saved as **`finance_disaster_analysis.csv`** in the `data/analysis/` folder — this is the file picked up by the modeling notebook.
 
 ---
 
@@ -148,9 +148,9 @@ Verify this points to your local `1-Climate Finance Project` folder, and update 
 
 ```bash
 # Option 1: run interactively
-jupyter lab notebooks/Preprocessing.ipynb
+jupyter lab notebooks/preprocessing.ipynb
 
 # Option 2: execute headlessly and save output
-jupyter nbconvert --to notebook --execute notebooks/Preprocessing.ipynb --output notebooks/Preprocessing_executed.ipynb
+jupyter nbconvert --to notebook --execute notebooks/preprocessing.ipynb --output notebooks/preprocessing_executed.ipynb
 ```
 

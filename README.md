@@ -44,7 +44,7 @@ data/
 | `disaster_dataset_cleaned.dta` | `data/disaster/` | Cleaned version of the raw dataset with standardized column names, parsed damage values, and filtered date ranges. This is the input consumed by the Preprocessing notebook. |
 | `finance_disaster_master.dta` | `data/finance/` | County × month panel of mortgage delinquency rates (early: 30–89 days past due, late: 90+ days). One row per FIPS code × calendar month, January 2008 – February 2025. |
 
-The Preprocessing notebook merges `disaster_dataset_cleaned.dta` and `finance_disaster_master.dta` into `Finance_Disaster_Analysis.csv`, which is saved to `data/analysis/` and consumed by all downstream notebooks.
+The Preprocessing notebook merges `disaster_dataset_cleaned.dta` and `finance_disaster_master.dta` into `finance_disaster_analysis.csv`, which is saved to `data/analysis/` and consumed by all downstream notebooks.
 
 ---
 
@@ -69,12 +69,12 @@ Run the notebooks **in order**. Each stage produces output consumed by the next.
 
 Cleans and merges two raw datasets:
 
-- **`Disaster_Dataset_Cleaned.dta`** — NOAA storm events (event-level)
-- **`Finance_Disaster_Master.dta`** — county × month mortgage delinquency rates
+- **`disaster_dataset_cleaned.dta`** — NOAA storm events (event-level)
+- **`finance_disaster_master.dta`** — county × month mortgage delinquency rates
 
 The pipeline collapses event-level disaster records into the county × month grid, parses NOAA damage strings (e.g. `"25K"`, `"3.5M"`), normalizes 60+ event types into 8 categories (Hurricane, Tropical Storm, Tornado, Flood, Thunderstorm, Winter Weather, Wildfire, Hail), and filters to economically significant events (≥ $500k damage).
 
-**Output:** `Finance_Disaster_Analysis.csv` — a clean county × month panel ready for analysis.
+**Output:** `finance_disaster_analysis.csv` — a clean county × month panel ready for analysis.
 
 ➡️ [Full Preprocessing README](docs/Preprocessing.md)
 
@@ -84,7 +84,7 @@ The pipeline collapses event-level disaster records into the county × month gri
 
 📂 [`EDA`](docs/EDA.md)
 
-Explores `Finance_Disaster_Analysis.csv` before any modeling. Key findings:
+Explores `finance_disaster_analysis.csv` before any modeling. Key findings:
 
 - ~**1.46%** of county-months are treated (disaster occurred) in any given month.
 - ~**89.6%** of counties experience at least one qualifying disaster over the full sample.

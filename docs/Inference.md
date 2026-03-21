@@ -6,11 +6,11 @@ This folder contains the panel econometric analysis estimating the causal effect
 
 | File | Description |
 |------|-------------|
-| `notebooks/Inference.ipynb` | Panel OLS regressions of delinquency rates on disaster exposure variables |
+| `notebooks/inference.ipynb` | Panel OLS regressions of delinquency rates on disaster exposure variables |
 
 ## Data
 
-The notebook reads `Finance_Disaster_Analysis.csv` from the `Data/3-Analysis/` folder of the project. The dataset is a county-month panel containing:
+The notebook reads `finance_disaster_analysis.csv` from the `data/analysis/` folder of the project. The dataset is a county-month panel containing:
 
 - **`fips`** – County FIPS code (entity identifier)
 - **`month`** – Year-month (time identifier)

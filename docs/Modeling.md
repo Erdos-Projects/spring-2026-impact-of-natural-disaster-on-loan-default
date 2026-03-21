@@ -6,7 +6,7 @@ This folder contains the predictive modeling pipeline for forecasting county-lev
 
 ## Data
 
-The model uses `Finance_Disaster_Analysis.csv`, a merged panel dataset at the **county × month** level covering **January 2008 – February 2025**. Each row represents one county (identified by FIPS code) in one month and includes:
+The model uses `finance_disaster_analysis.csv`, a merged panel dataset at the **county × month** level covering **January 2008 – February 2025**. Each row represents one county (identified by FIPS code) in one month and includes:
 
 - **Delinquency rates** — `Early_Delinquency_Rate` and `Late_Delinquency_Rate`
 - **Disaster indicators** — occurrence flags and damage estimates for floods, tornadoes, thunderstorms, hail, and aggregate disaster counts
@@ -73,7 +73,7 @@ The CatBoost model substantially outperforms the naive baseline, reducing RMSE b
 
 ### Top Feature Importances
 
-The 20 most important features (by CatBoost's built-in importance metric) are visualized in `notebooks/Modeling.ipynb`. Lagged delinquency rates dominate, confirming strong autocorrelation in delinquency series — with disaster-related features contributing meaningful signal on top of that baseline.
+The 20 most important features (by CatBoost's built-in importance metric) are visualized in `notebooks/modeling.ipynb`. Lagged delinquency rates dominate, confirming strong autocorrelation in delinquency series — with disaster-related features contributing meaningful signal on top of that baseline.
 
 ---
 
@@ -81,6 +81,6 @@ The 20 most important features (by CatBoost's built-in importance metric) are vi
 
 | File            | Description                                              |
 |-----------------|----------------------------------------------------------|
-| `notebooks/Modeling.ipynb` | End-to-end notebook: feature construction, model training, evaluation, and feature importance plot |
+| `notebooks/modeling.ipynb` | End-to-end notebook: feature construction, model training, evaluation, and feature importance plot |
 | `notebooks/modeling.py`   | Reusable helper functions: `build_prediction_dataset`, `temporal_split`, `evaluate_predictions` |
 

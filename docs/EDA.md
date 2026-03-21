@@ -7,7 +7,7 @@
 
 ## Overview
 
-`notebooks/eda.ipynb` explores `Finance_Disaster_Analysis.csv` — the merged panel produced by the Preprocessing pipeline — before any modeling. The goals are to:
+`notebooks/eda.ipynb` explores `finance_disaster_analysis.csv` — the merged panel produced by the Preprocessing pipeline — before any modeling. The goals are to:
 
 1. Understand the distribution and frequency of disaster treatment events.
 2. Check whether delinquency rates move around disaster dates (raw and county-demeaned).
@@ -17,7 +17,7 @@
 
 ## Input Data
 
-**File:** `Finance_Disaster_Analysis.csv` (in `3-Analysis/`)
+**File:** `finance_disaster_analysis.csv` (in `data/analysis/`)
 **Unit of observation:** county × month (one row per FIPS code × calendar month)
 
 Key columns used in this notebook:
