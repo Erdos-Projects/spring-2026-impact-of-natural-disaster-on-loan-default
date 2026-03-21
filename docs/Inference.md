@@ -2,11 +2,12 @@
 
 This folder contains the panel econometric analysis estimating the causal effect of natural disaster events on mortgage loan delinquency rates at the U.S. county level.
 
-## File
+## Files
 
 | File | Description |
 |------|-------------|
 | `notebooks/inference.ipynb` | Panel OLS regressions of delinquency rates on disaster exposure variables |
+| `data/analysis/inference_results.csv` | Collected model coefficients, standard errors, and p-values |
 
 ## Data
 
@@ -85,4 +86,21 @@ Examines whether the flood effect varies across the five most disaster-exposed c
 | Flood occurrence (individual) | Late Delinquency | Not significant |
 | Joint type model | Early Delinquency | Only flood significant; tornado/hail/thunder are not |
 | County heterogeneity | Early Delinquency | Flood effect varies by county — some positive, some negative |
+
+## Output
+
+The notebook collects coefficients from every model using `utils.extract_panel_results()` and saves them to `data/analysis/inference_results.csv`. Each row contains:
+
+| Column | Description |
+|--------|-------------|
+| `model` | Model label (`baseline`, `distributed_lag`, `flood_only`, `hail_only`, `tornado_only`, `joint_types`, `county_heterogeneity`) |
+| `outcome` | Dependent variable (`Early_Delinquency_Rate` or `Late_Delinquency_Rate`) |
+| `regressor` | Independent variable name |
+| `coef` | Estimated coefficient |
+| `se` | Clustered standard error |
+| `pvalue` | p-value |
+| `nobs` | Number of observations |
+| `r2` | R² (within) |
+
+This file can be loaded downstream with `utils.load_analysis_inference()` for further analysis or presentation.
 
