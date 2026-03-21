@@ -77,10 +77,22 @@ The 20 most important features (by CatBoost's built-in importance metric) are vi
 
 ---
 
+## Conclusions
+
+- CatBoost reduces RMSE by ~21% over the naive baseline on the held-out test set, explaining ~83% of variance in next-month early delinquency rates.
+- **Lagged delinquency rates** are the dominant features, confirming strong month-to-month autocorrelation.
+- **Disaster-related features** (lagged damage, event occurrence, rolling exposure) contribute meaningful additional signal on top of that baseline.
+- The slight performance gap between validation and test suggests mild non-stationarity in the later period, but the model generalizes well overall.
+- The monthly performance plot confirms the model tracks the aggregate trend closely.
+
+---
+
 ## Files
 
 | File            | Description                                              |
 |-----------------|----------------------------------------------------------|
 | `notebooks/modeling.ipynb` | End-to-end notebook: feature construction, model training, evaluation, and feature importance plot |
-| `notebooks/modeling.py`   | Reusable helper functions: `build_prediction_dataset`, `temporal_split`, `evaluate_predictions` |
+| `src/climatefinance/modeling.py` | Reusable helper functions: `build_prediction_dataset`, `temporal_split`, `evaluate_predictions` |
+| `src/climatefinance/plots.py` | `plot_model_feature_importance`, `plot_model_monthly_performance` |
+| `data/figures/model/` | Saved PNG plots (feature importance, monthly performance) |
 
