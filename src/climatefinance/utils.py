@@ -6,21 +6,13 @@ from typing import Any
 import git
 import pandas as pd
 
-# Constant to be used
-FINANCE_FILE = "data/finance/finance_disaster_master.dta"
-DISASTER_FILE = "data/disaster/disaster_dataset_cleaned.dta"
-ANALYSIS_FOLDER = "data/analysis"
-ANALYSIS_FILE = "finance_disaster_analysis"
-TARGET_TYPES = [
-    "Hurricane",
-    "Tornado",
-    "Tropical Storm",
-    "Thunderstorm",
-    "Flood",
-    "Winter Weather",
-    "Wildfire",
-    "Hail",
-]
+from climatefinance.constants import (
+    ANALYSIS_FILE,
+    ANALYSIS_FOLDER,
+    DISASTER_FILE,
+    FINANCE_FILE,
+    TARGET_TYPES,
+)
 
 
 def get_repo_root() -> str:
