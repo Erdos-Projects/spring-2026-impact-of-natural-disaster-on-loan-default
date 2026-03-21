@@ -10,6 +10,7 @@ import pandas as pd
 FINANCE_FILE = "data/finance/finance_disaster_master.dta"
 DISASTER_FILE = "data/disaster/disaster_dataset_cleaned.dta"
 ANALYSIS_FOLDER = "data/analysis"
+ANALYSIS_FILE = "finance_disaster_analysis"
 TARGET_TYPES = [
     "Hurricane",
     "Tornado",
@@ -52,7 +53,7 @@ def get_target_types() -> list:
 
 def save_analysis_data(
     df: pd.DataFrame,
-    filename: str,
+    filename: str = ANALYSIS_FILE,
     subdir: str = ANALYSIS_FOLDER,
     **kwargs: Any,
 ) -> None:
@@ -65,7 +66,7 @@ def save_analysis_data(
 
 
 def load_analysis_data(
-    filename: str,
+    filename: str = ANALYSIS_FILE,
     subdir: str = ANALYSIS_FOLDER,
     **kwargs: Any,
 ) -> pd.DataFrame:
