@@ -1,15 +1,25 @@
 # ========================================
 # Project
 # ========================================
+# We want to exclude accidental data leak
 data/*
-!data/*/.gitkeep
-!data/analysis/
+# Specifically we want to include non-data analysis results
+!data/analysis
 data/analysis/*
 !data/analysis/inference_results.csv
 !data/analysis/modeling_results.csv
-
-assets/*
-!assets/*/.gitkeep
+# We want figures (png) in git lfs — allow the entire figures tree
+!data/figures/
+# We also want the pdf's that describe our datasets
+!data/finance
+data/finance/**
+!data/finance/*.pdf
+!data/disaster
+data/disaster/**
+!data/disaster/*.pdf
+# Any other assets we want to pull in
+assets/**
+!assets/**/.gitkeep
 
 # ========================================
 # Nix
